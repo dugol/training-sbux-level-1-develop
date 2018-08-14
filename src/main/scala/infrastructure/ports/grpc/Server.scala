@@ -7,6 +7,8 @@ import io.grpc.bookMessages._
 import scala.concurrent.{ExecutionContext, Future}
 import io.grpc.{Server, ServerBuilder}
 import java.util.logging.Logger
+import io.grpc.protobuf.services.ProtoReflectionService
+
 
 import entities.Book
 import services.BookService
@@ -16,7 +18,9 @@ class GrpcServer(executionContext: ExecutionContext){ self =>
   private[this] var server:Server=null
 
   private def start()={
-    server=ServerBuilder.forPort(50051).addService(BookGrpc.bindService(new BookGrpcImpl,executionContext)).build.start
+    server=ServerBuilder.forPort(50051)
+      .addService(BookGrpc.bindService(new BookGrpcImpl,executionContext))
+      .build.start
     println("Server started, listening on 50051")
     sys.addShutdownHook{
       System.err.println("***shutting down gRPC server since JVM is shutting down")

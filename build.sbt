@@ -15,6 +15,7 @@ val scalapbVersion = com.trueaccord.scalapb.compiler.Version.scalapbVersion
 val grpcDependencies = Seq(
   "io.grpc"                    % "grpc-netty"                            % grpcJavaVersion,
   "io.grpc"                    % "grpc-protobuf"                         % grpcJavaVersion,
+  "io.grpc"                    % "grpc-services"                         % grpcJavaVersion,
   "com.trueaccord.scalapb"     %% "scalapb-runtime-grpc"                 % scalapbVersion,
   "com.trueaccord.scalapb"     %% "scalapb-runtime"                      % scalapbVersion % "protobuf",
   "com.google.api.grpc"        % "proto-google-common-protos"            % "0.1.13"
